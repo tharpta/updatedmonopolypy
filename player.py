@@ -6,6 +6,8 @@ class Player:
         self.bank = bank
         self.pos = 0 
         self.eliminated = False
+        self.jailed = False
+
 
     def __repr__(self):
         """repr is used to compute the 'official' string representation of an object.
@@ -19,7 +21,7 @@ class Player:
             num1 = random.randint(1,6)
             num2 = random.randint(1,6)
             die_total = num1 + num2
-            if num1 != num2:
+            if num1 != num2 and self.jailed == False:
                 self.move(die_total)
                 break
             if num1 == num2:
@@ -38,6 +40,7 @@ class Player:
         return die_total
 
     def go_to_jail(self):
+
         print("you are in jail")
         self.pos = 10
 
